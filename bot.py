@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 import webbrowser
 
-prefix = "$"
+prefix = "?"
 bot = commands.Bot(command_prefix=prefix)
 
 
@@ -17,10 +17,9 @@ bot = commands.Bot(command_prefix=prefix)
 # On Ready and Online Event
 @bot.event
 async def on_ready():
-    print("Everything's ready Boss ;)")
-    game = discord.Game("with the API :P")
+    print("Bot is up and Running..")
+    game = discord.Game("?help")
     await bot.change_presence(status=discord.Status.online, activity=game)
-
 
 @bot.event
 async def on_message(message):
@@ -37,6 +36,8 @@ async def on_message(message):
     elif "dick" in message.content.lower():
         await message.delete()
         await message.channel.send(f"{mention} No Swearing Allowed in This Server!")
+        
+    await bot.process_commands(message)
 
 # ---------------------------------------------
 
@@ -57,19 +58,10 @@ async def ping(ctx):
 @bot.command()
 async def whoareyou(ctx):
     '''Replies with an intro to the bot'''
-    text = "I am your AI friend! that will help you manage the server! and my name is Mr.Moustache!"
+    text = "I am Devi and I will help you manage the server!"
     await ctx.send(text)
 
 
-
-#latency command
-@bot.command()
-async def latency(ctx):
-    '''
-    Shows the latency to the bot
-    '''
-    latency = bot.latency
-    await ctx.send(latency)
 
 
 
@@ -79,7 +71,7 @@ async def test(ctx):
     '''
     Checks if the bot is working
     '''
-    text = "I am working good!"
+    text = "Everything's alright!"
     mention = ctx.author.mention
     await ctx.send(mention + " " + text)
 
@@ -101,20 +93,9 @@ async def ban(ctx, Member: discord.Member):
 async def kick(ctx, Member: discord.Member):
     '''
     Kicks a Member
-    '''
+    ''' 
     await Member.kick()
     await ctx.send("Successfuly Kicked {} by {}".format(Member, ctx.author.mention))
-
-
-
-#openlink command
-@bot.command()
-async def openlink(ctx, *, link: str):
-    '''
-    Opens a website link in your default web browser
-    '''
-    await webbrowser.open(link)
-
 
 
 
@@ -122,5 +103,4 @@ async def openlink(ctx, *, link: str):
 file = open("important.txt", "r")
 important = file.read()
 bot.run(important)
-
 
