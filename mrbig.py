@@ -22,9 +22,25 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.online, activity=game)
 
 
+@bot.event
+async def on_message(message):
+    mention = message.author.mention
+    if "fuck" in message.content.lower():
+        await message.delete()
+        await message.channel.send(f"{mention} No Swearing Allowed in This Server!")
+    elif "shit" in message.content.lower():
+        await message.delete()
+        await message.channel.send(f"{mention} No Swearing Allowed in This Server!")
+    elif "ass" in message.content.lower():
+        await message.delete()
+        await message.channel.send(f"{mention} No Swearing Allowed in This Server!")
+    elif "dick" in message.content.lower():
+        await message.delete()
+        await message.channel.send(f"{mention} No Swearing Allowed in This Server!")
+
 # ---------------------------------------------
 
-#------------------COMMANDS-------------------
+#-------------------COMMANDS-------------------
 
 #----------------------------------------------
 
