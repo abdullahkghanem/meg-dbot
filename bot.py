@@ -2,6 +2,7 @@
 import discord
 from discord.ext import commands
 import webbrowser
+import asyncio
 
 prefix = "?"
 bot = commands.Bot(command_prefix=prefix)
@@ -45,6 +46,42 @@ async def on_message(message):
 
 #----------------------------------------------
 
+@bot.command()
+async def remove_role(ctx, Member: discord.Member, Role: discord.Role):
+    '''Removes Roles from a Member (Requires Admin Permissions)'''
+    mention = ctx.author.mention
+
+    if ctx.author.guild_permissions.administrator:
+        await Member.remove_roles(Role, reason=None, atomic=True)
+        await ctx.send(f"Removed Role: {Role} from {Member}")
+    else:
+        await ctx.send(f"You do not have permission to run this command. {mention}")
+
+
+#adds roles
+@bot.command()
+async def add_role(ctx, Member: discord.Member, Role: discord.Role):
+    '''Adds Roles to a Member (Requires Admin Permissions)'''
+    mention = ctx.author.mention
+
+    if ctx.author.guild_permissions.administrator:
+        await Member.add_roles(Role, reason=None, atomic=True)
+        await ctx.send(f"Added Role: {Role} to {Member}")
+    else:
+        await ctx.send(f"You do not have permission to run this command. {mention}")
+
+#bulk delete messages
+@bot.command()
+async def purge(ctx, num: int):
+    '''Bulk Deletes Messages (Requires Admin Permissions)'''
+    mention = ctx.author.mention
+
+    if ctx.author.guild_permissions.administrator:
+        await ctx.channel.purge(limit=num + 1)
+        await ctx.send(f"Deleted Messages Successfully! {mention}")
+    else:
+        await ctx.send(f"You do not have permission to run this command. {mention}")
+
 #ping command
 @bot.command()
 async def ping(ctx):
@@ -60,9 +97,6 @@ async def whoareyou(ctx):
     '''Replies with an intro to the bot'''
     text = "I am Devi and I will help you manage the server!"
     await ctx.send(text)
-
-
-
 
 
 #test command
@@ -81,23 +115,30 @@ async def test(ctx):
 @bot.command()
 async def ban(ctx, Member: discord.Member):
     '''
-    Bans a member permanently
+    Bans a member permanently (Requires Admin Permissions)
     '''
-    await Member.ban()
-    await ctx.send("Successfuly Banned {} by {}".format(Member, ctx.author.mention))
+    mention = ctx.author.mention
 
+    if ctx.author.guild_permissions.administrator:
+        await Member.ban()
+        await ctx.send("Successfuly Banned {} by {}".format(Member, ctx.author.mention))
+    else:
+        await ctx.send(f"You do not have permission to run this command. {mention}")
 
 
 #kick command
 @bot.command()
 async def kick(ctx, Member: discord.Member):
     '''
-    Kicks a Member
-    ''' 
-    await Member.kick()
-    await ctx.send("Successfuly Kicked {} by {}".format(Member, ctx.author.mention))
+    Kicks a Member (Requires Admin Permissions)
+    '''
+    mention = ctx.author.mention
 
-
+    if ctx.author.guild_permissions.administrator:
+        await Member.kick()
+        await ctx.send("Successfuly Kicked {} by {}".format(Member, ctx.author.mention))
+    else:
+        await ctx.send(f"You do not have permission to run this command. {mention}")
 
 #running bot
 file = open("important.txt", "r")
