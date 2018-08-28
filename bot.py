@@ -141,7 +141,5 @@ async def kick(ctx, Member: discord.Member):
         await ctx.send(f"You do not have permission to run this command. {mention}")
 
 #running bot
-file = open("important.txt", "r")
-important = file.read()
-bot.run(important)
+bot.run("NDgwODY3Nzc5MjEwMjQ4MTkz.DmcSVA.-X31cnRJCOwWCz1vJqf_aMQjHOA")
 
