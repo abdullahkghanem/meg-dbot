@@ -1,4 +1,4 @@
-# Mr Big Discord Bot
+# Megalodon Discord Bot
 1.Intelligence
 2.Fast
 3.Powerful
