@@ -3,6 +3,7 @@ import discord
 from discord.ext import commands
 import webbrowser
 import asyncio
+import random
 
 prefix = "?"
 bot = commands.Bot(command_prefix=prefix)
@@ -45,6 +46,14 @@ async def on_message(message):
 #-------------------COMMANDS-------------------
 
 #----------------------------------------------
+
+@bot.command()
+async def truth(ctx, *, question):
+    '''Ask the bot some questions and he will answer without lying!'''
+    answers = ["Without a doubt!", "Ofcourse No!!", "I will tell you next time..", "I am too lazy to tell you now!", "Can you please ask your question again?", "Kill them.", "Yes", "BEEB BOOP ERROR 2876 (I won't answer u lolololol)"]
+    reply = random.choice(answers)
+    await ctx.channel.send(f"{ctx.author.mention} {reply}")
+
 
 @bot.command()
 async def shut(ctx, Member: discord.Member):
