@@ -47,6 +47,18 @@ async def on_message(message):
 #----------------------------------------------
 
 @bot.command()
+async def shut(ctx, Member: discord.Member):
+    '''Mutes a Member from a voice channel (Requires Admin Permissions)'''
+    if ctx.author.guild_permissions.administrator:
+        await Member.edit(mute=True, deafen=True)
+        await ctx.send(f"{Member} was muted by {ctx.author.mention}")
+    else:
+        ctx.send(f"You do not have permission to run this command. {ctx.author.mention}")
+
+
+
+#removes roles
+@bot.command()
 async def remove_role(ctx, Member: discord.Member, Role: discord.Role):
     '''Removes Roles from a Member (Requires Admin Permissions)'''
     mention = ctx.author.mention
