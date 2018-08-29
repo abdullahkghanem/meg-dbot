@@ -1,4 +1,15 @@
 #bot made by abdullahkghanem
+'''
+════════════════════════════
+©️ COPYRIGHT INFRINGEMENT! ©️
+════════════════════════════
+According to Law of the United States of America, You Can't use, distribute or pretend to own
+any of my files duo to copyright and any way of doing that or taking snippets of my code
+will lead you to serious legal trouble which will invite you to USA courts which may harm you in any of these legal ways:
+1. Sueing Money and House.
+2. Get in Jail
+So please do not claim to use the code under or you may get in trouble.
+'''
 import discord
 from discord.ext import commands
 import webbrowser
