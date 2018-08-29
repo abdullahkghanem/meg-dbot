@@ -40,16 +40,20 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     mention = message.author.mention
+
     if "fuck" in message.content.lower():
         await message.delete()
         await message.channel.send(f"{mention} No Swearing Allowed in This Server!")
     elif "shit" in message.content.lower():
         await message.delete()
         await message.channel.send(f"{mention} No Swearing Allowed in This Server!")
-    elif "ass" in message.content.lower():
+    elif "nigg" in message.content.lower():
         await message.delete()
         await message.channel.send(f"{mention} No Swearing Allowed in This Server!")
     elif "dick" in message.content.lower():
+        await message.delete()
+        await message.channel.send(f"{mention} No Swearing Allowed in This Server!")
+    elif "asshole" in message.content.lower():
         await message.delete()
         await message.channel.send(f"{mention} No Swearing Allowed in This Server!")
         
