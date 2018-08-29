@@ -5,6 +5,8 @@ import webbrowser
 import asyncio
 import random
 
+
+
 prefix = "?"
 bot = commands.Bot(command_prefix=prefix)
 
@@ -19,8 +21,9 @@ bot = commands.Bot(command_prefix=prefix)
 # On Ready and Online Event
 @bot.event
 async def on_ready():
-    print("Bot is up and Running..")
-    game = discord.Game("?help")
+    print("Logged In as {}".format(bot.user))
+    print("----------------------------")
+    game = discord.Game("with fish!")
     await bot.change_presence(status=discord.Status.online, activity=game)
 
 @bot.event
@@ -46,7 +49,6 @@ async def on_message(message):
 #-------------------COMMANDS-------------------
 
 #----------------------------------------------
-
 @bot.command()
 async def truth(ctx, *, question):
     '''Ask the bot some questions and he will answer without lying!'''
